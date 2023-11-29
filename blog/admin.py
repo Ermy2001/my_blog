@@ -57,7 +57,7 @@ class ArticleAdmin(admin.ModelAdmin):
     actions = [make_published, make_draft]
 
     def category_to_str(self, obj):
-        return ", ".join([category.title for category in obj.category_published()])
+        return ", ".join([category.title for category in obj.category.active()])
 
 
 admin.site.register(Article, ArticleAdmin)

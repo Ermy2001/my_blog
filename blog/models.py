@@ -11,6 +11,7 @@ class ArticleManager(models.Manager):
     def published(self):
         return self.filter(status="p")
 
+
 class CategoryManager(models.Manager):
     def active(self):
         return self.filter(status=True)
@@ -18,7 +19,8 @@ class CategoryManager(models.Manager):
 
 # Create your models here.
 class Category(models.Model):
-    parent = models.ForeignKey('self', default=None, null=True, blank=True, on_delete=models.SET_NULL, related_name="Children", verbose_name="زیردسته")
+    parent = models.ForeignKey('self', default=None, null=True, blank=True, on_delete=models.SET_NULL,
+                               related_name="Children", verbose_name="زیردسته")
     title = models.CharField(max_length=200, verbose_name="عنوان دسته بندی")
     slug = models.SlugField(max_length=100, unique=True, verbose_name="آدرس دسته بندی")
     status = models.BooleanField(default=True, verbose_name="آیا نمایش داده شود؟")
@@ -62,8 +64,6 @@ class Article(models.Model):
         return jalali_convertor(self.publish)
     jpublish.short_description = "زمان انتشار"
 
-    def category_published(self):
-        return self.category.filter(status=True)
 
     def thumbnail_tag(self):
         return format_html("<img width=100 height=75 style='border-radius: 5px;' src='{}'>".format(self.thumbnail.url))
