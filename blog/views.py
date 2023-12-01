@@ -48,7 +48,7 @@ class ArticleDetail(DetailView):
 
 class CategoryList(ListView):
     paginate_by = 2
-    template_name = 'blog/list.html'
+    template_name = 'blog/category_list.html'
 
     def get_queryset(self):
         global category
