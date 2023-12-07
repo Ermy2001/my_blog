@@ -27,7 +27,7 @@ media
 .Python
 build/
 develop-eggs/
-dist/
+static/registration/adminlte/assets/
 downloads/
 eggs/
 .eggs/
